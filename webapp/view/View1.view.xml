@@ -1,0 +1,48 @@
+<mvc:View controllerName="scrollcontainer.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <ScrollContainer >
+        <Table items = "{SalesJSONModel>/SalesCollection}" fixedLayout="false" >
+            <columns >
+                <Column ><Label text="MANDT"/></Column>
+                <Column ><Label text="SALES_DOCUMENT"/></Column>
+                <Column ><Label text="SALES_DOCUMENT_ITEM"/></Column>
+                <Column ><Label text="DOC_CREATED_DATE"/></Column>
+                <Column ><Label text="SCHEDULE_LINE_NO"/></Column>
+                <Column ><Label text="PRODUCT_ID"/></Column>
+                <Column ><Label text="MATERIAL_VARIANT"/></Column>
+                <Column ><Label text="QTY_UNITS"/></Column>
+                <Column ><Label text="PROD_AVAILABILITY_DT"/></Column>
+                <Column ><Label text="CUSTOMER_GROUP"/></Column>
+                <Column ><Label text="LOCATION_ID"/></Column>
+                <Column ><Label text="SALES_ORG"/></Column>
+                <Column ><Label text="DISTR_CHANNEL"/></Column>
+                <Column ><Label text="SAL_DOCU_TYPE"/></Column>
+                <Column ><Label text="CHANGED_BY"/></Column>
+                <Column ><Label text="CREATED_BY"/></Column>
+            </columns>
+            <items >
+                <ColumnListItem >
+                    <Text text="{SalesJSONModel>MANDT}"/>
+                    <Text text="{SalesJSONModel>SALES_DOCUMENT}"/>
+                    <Text text="{SalesJSONModel>SALES_DOCUMENT_ITEM}"/>
+                    <Text text="{SalesJSONModel>DOC_CREATED_DATE}"/>
+                    <Text text="{SalesJSONModel>SCHEDULE_LINE_NO}"/>
+                    <Text text="{SalesJSONModel>PRODUCT_ID}"/>
+                    <Text text="{SalesJSONModel>MATERIAL_VARIANT}"/>
+                    <Text text="{SalesJSONModel>QTY_UNITS}"/>
+                    <Text text="{SalesJSONModel>PROD_AVAILABILITY_DT}"/>
+                    <Text text="{SalesJSONModel>CUSTOMER_GROUP}"/>
+                    <Text text="{SalesJSONModel>LOCATION_ID}"/>
+                    <Text text="{SalesJSONModel>SALES_ORG}"/>
+                    <Text text="{SalesJSONModel>DISTR_CHANNEL}"/>
+                    <Text text="{SalesJSONModel>SAL_DOCU_TYPE}"/>
+                    <Text text="{SalesJSONModel>CHANGED_BY}"/>
+                    <Text text="{SalesJSONModel>CREATED_BY}"/>
+                </ColumnListItem>
+            </items>
+        </Table> 
+    </ScrollContainer>
+    </Page>
+</mvc:View>
