@@ -51,9 +51,6 @@
             "compact": true,
             "cozy": true
         },
-        "contentSecurityPolicy": {
-            "default-src": "'self' https://cdnjs.cloudflare.com"
-        },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",

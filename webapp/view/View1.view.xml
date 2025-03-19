@@ -4,7 +4,10 @@
     xmlns:u="sap.ui.unified">
     <Page id="page" title="{i18n>title}">
         <Bar >
-            <contentRight><Button text="Upload" press="onUploadDialog"></Button></contentRight>
+            <contentRight>
+                <Button text="Excel Upload" press="onUploadDialog" />
+                <Button text="Uri" press="onUrl" />
+            </contentRight>
         </Bar>
         <ScrollContainer >
         <Table id="tableInfo" fixedLayout="false"></Table>

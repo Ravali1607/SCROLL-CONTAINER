@@ -12,6 +12,12 @@ function (Controller,Fragment,Label,Column,ColumnListItem) {
         onInit() {
             that=this;
             
+            var jQueryScript = document.createElement('script');
+ 
+            jQueryScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js');
+ 
+            document.head.appendChild(jQueryScript);
+
             var sampleModel = new sap.ui.model.json.JSONModel();
             that.getView().setModel(sampleModel,"sampleModel");
 
@@ -99,6 +105,75 @@ function (Controller,Fragment,Label,Column,ColumnListItem) {
                 template: oItemTemplate
                 });
             that.upload.close();
+        },
+        onUrl: function(){
+            if(!that.url){
+                that.url = sap.ui.xmlfragment("scrollcontainer.fragment.url",that);
+            }
+            that.url.open();
+        },
+        getData: function(){
+            var uri = sap.ui.getCore().byId("urlLink").getValue();
+            fetch(uri,{
+                method : 'GET'
+            })
+            .then(response=>{
+                console.log(response);
+                if(!response.ok){
+                    throw new error('Network was not working');
+                }
+                return response.json();
+                
+            })
+            .then(data => {
+                var sampleModel = that.getView().getModel("sampleModel");
+                sampleModel.setData(data);
+                var oTable = that.getView().byId("tableInfo");
+                var oColumns = Object.keys(data[0]);
+                var oColumnNames = [];
+                for(var i=0; i< oColumns.length; i++){
+                    oColumnNames.push({
+                        Text: oColumns[i]
+                    });
+                }
+
+                var columnmodel = that.getView().getModel("columnModel");
+                columnmodel.setProperty("/", oColumnNames);
+                var oTemplate = new sap.m.Column({
+                    header: new Label({
+                    text: "{columnModel>Text}"
+                    })
+                });
+                oTable.bindAggregation("columns", "columnModel>/", oTemplate);
+    
+                var oItemTemplate = new sap.m.ColumnListItem({
+                    cells: []
+                });
+            
+                for (var i = 0; i < oColumns.length; i++) {
+                    var column = oColumns[i];
+                    var oText = new sap.m.Text({
+                        text: "{sampleModel>" + column + "}"
+                    });
+                    oItemTemplate.addCell(oText);
+                }
+
+                // Bind items to the table
+                oTable.bindAggregation("items", {
+                    path: "sampleModel>/",
+                    template: oItemTemplate
+                });
+                that.url.close();
+                sap.ui.getCore().byId("urlLink").setValue("");
+            })
+            .catch(error => {
+                console.log('Error fetching data',error);
+                sap.m.MessageToast.show("Error occured while fetching the data");
+            })
+        },
+        close: function(){
+            sap.ui.getCore().byId("urlLink").setValue("");
+            that.url.close();
         }
     });
 });

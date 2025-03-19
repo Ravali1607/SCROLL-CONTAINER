@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:unified="sap.ui.unified" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:core= "sap.ui.core"
+xmlns= "sap.m"
+>
+    <Dialog id="url" title="Upload file">
+            <form:SimpleForm >
+                <Label text="Enter url"></Label>
+                <Input id="urlLink"></Input>
+            </form:SimpleForm>
+            <footer>
+                <Toolbar >
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <Button text="Get Data" press="getData"></Button>
+                    <Button text="Cancel" press="close"></Button>
+                </Toolbar>
+            </footer>
+    </Dialog>
+</core:FragmentDefinition>
