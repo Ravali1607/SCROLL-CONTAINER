@@ -1,7 +1,7 @@
-<mvc:View controllerName="scrollcontainer.controller.View1"
+<mvc:View xmlns:table="sap.ui.table" controllerName="scrollcontainer.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:u="sap.ui.unified">
+    >
     <Page id="page" title="{i18n>title}">
         <Bar >
             <contentRight>
@@ -10,7 +10,8 @@
             </contentRight>
         </Bar>
         <ScrollContainer >
-        <Table id="tableInfo" fixedLayout="false"></Table>
+            <table:Table id="tableInfo" ></table:Table>
+            <!-- <Table id="tableInfo" fixedLayout="false"></Table> -->
         </ScrollContainer>
     </Page>
 </mvc:View>
